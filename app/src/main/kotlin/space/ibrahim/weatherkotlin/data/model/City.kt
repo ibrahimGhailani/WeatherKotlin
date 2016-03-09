@@ -8,6 +8,6 @@ data class City(
         val name: String,
         val coord: Coord,
         val country: String,
-        val temperature: Temperature
+        val main: Temperature
 )
 

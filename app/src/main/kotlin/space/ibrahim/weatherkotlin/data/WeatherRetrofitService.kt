@@ -1,7 +1,7 @@
 package space.ibrahim.weatherkotlin.data
 
 import retrofit.http.GET
-import retrofit.http.Field
+import retrofit.http.Query
 import rx.Observable
 import space.ibrahim.weatherkotlin.data.model.OpenWeatherResponseModel
 
@@ -11,10 +11,11 @@ import space.ibrahim.weatherkotlin.data.model.OpenWeatherResponseModel
 
 interface WeatherRetrofitService {
 
-    @GET("find/")
-    fun getWeather(@Field("q") city: String,
-                   @Field("type") type: String,
-                   @Field("mode") mode: String,
-                   @Field("appid") appid: String
+    @GET("find")
+    fun getWeather(@Query("q") city: String,
+                   @Query("type") type: String,
+                   @Query("mode") mode: String,
+                   @Query("units") units: String,
+                   @Query("appid") appid: String
     ): Observable<OpenWeatherResponseModel>
 }

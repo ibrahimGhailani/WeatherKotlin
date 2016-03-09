@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import retrofit.GsonConverterFactory
 import retrofit.Retrofit
+import retrofit.RxJavaCallAdapterFactory
 import space.ibrahim.weatherkotlin.R
 import space.ibrahim.weatherkotlin.data.WeatherRetrofitService
 import space.ibrahim.weatherkotlin.data.WeatherServiceRepositoryImpl
@@ -25,7 +26,7 @@ class WeatherActivity : AppCompatActivity(), WeatherView {
         }
     }
 
-    override fun showTemperature(temperature: String) {
+    override fun showTemperature(temperature: String?) {
         weatherResultTextView.text = temperature
     }
 
@@ -42,6 +43,7 @@ class WeatherActivity : AppCompatActivity(), WeatherView {
         var retrofit: Retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build()
 
         return retrofit.create(WeatherRetrofitService::class.java)
