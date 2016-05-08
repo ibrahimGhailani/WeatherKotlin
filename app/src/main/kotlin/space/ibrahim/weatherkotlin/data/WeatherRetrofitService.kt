@@ -1,7 +1,7 @@
 package space.ibrahim.weatherkotlin.data
 
-import retrofit.http.GET
-import retrofit.http.Query
+import retrofit2.http.GET
+import retrofit2.http.Query
 import rx.Observable
 import space.ibrahim.weatherkotlin.data.model.OpenWeatherResponseModel
 

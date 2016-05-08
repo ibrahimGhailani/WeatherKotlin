@@ -7,9 +7,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import retrofit.GsonConverterFactory
-import retrofit.Retrofit
-import retrofit.RxJavaCallAdapterFactory
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import space.ibrahim.weatherkotlin.R
 import space.ibrahim.weatherkotlin.data.WeatherRetrofitService
 import space.ibrahim.weatherkotlin.data.WeatherServiceRepositoryImpl
