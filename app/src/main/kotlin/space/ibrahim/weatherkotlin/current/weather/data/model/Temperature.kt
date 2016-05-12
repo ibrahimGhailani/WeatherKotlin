@@ -1,4 +1,4 @@
-package space.ibrahim.weatherkotlin.data.model
+package space.ibrahim.weatherkotlin.current.weather.data.model
 
 data class Temperature(
         val temp: String,

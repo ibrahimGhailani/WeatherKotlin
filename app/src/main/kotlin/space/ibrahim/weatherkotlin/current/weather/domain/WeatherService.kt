@@ -1,11 +1,8 @@
-package space.ibrahim.weatherkotlin.domain
+package space.ibrahim.weatherkotlin.current.weather.domain
 
 import rx.Observable
-import space.ibrahim.weatherkotlin.data.model.OpenWeatherResponseModel
+import space.ibrahim.weatherkotlin.current.weather.data.model.OpenWeatherResponseModel
 
-/**
- * Created by ibrahim on 2/24/16.
- */
 
 class WeatherService(weatherServiceRepository: WeatherServiceRepository) {
     val weatherServiceRepository = weatherServiceRepository

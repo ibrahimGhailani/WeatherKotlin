@@ -1,4 +1,4 @@
-package space.ibrahim.weatherkotlin.presentation
+package space.ibrahim.weatherkotlin.current.weather.presentation
 
 interface WeatherView {
     fun showToast(message: String)

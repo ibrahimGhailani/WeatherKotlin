@@ -1,14 +1,10 @@
-package space.ibrahim.weatherkotlin.presentation
+package space.ibrahim.weatherkotlin.current.weather.presentation
 
 import rx.Subscriber
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
-import space.ibrahim.weatherkotlin.data.model.OpenWeatherResponseModel
-import space.ibrahim.weatherkotlin.domain.WeatherService
-
-/**
- * Created by ibrahim on 2/24/16.
- */
+import space.ibrahim.weatherkotlin.current.weather.data.model.OpenWeatherResponseModel
+import space.ibrahim.weatherkotlin.current.weather.domain.WeatherService
 
 class WeatherPresenter(weatherView: WeatherView, weatherService: WeatherService) {
 
@@ -26,6 +22,7 @@ class WeatherPresenter(weatherView: WeatherView, weatherService: WeatherService)
 
                         override fun onError(e: Throwable?) {
                             weatherView.showLoading(false)
+                            weatherView.showTemperature("Error")
                             e?.printStackTrace()
                         }
 

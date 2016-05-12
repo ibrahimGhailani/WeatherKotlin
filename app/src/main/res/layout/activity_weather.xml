@@ -1,39 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="16dp">
 
     <EditText
         android:id="@+id/cityEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter city"/>
+        android:hint="Enter city" />
 
     <Button
         android:id="@+id/searchButton"
-        android:layout_marginTop="16dp"
-        android:text="Search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Search" />
 
 
     <TextView
         android:id="@+id/weatherResultTextView"
-        android:textAlignment="center"
-        android:text="0"
-        android:layout_marginTop="24dp"
-        android:textSize="24sp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="24sp" />
 
 
     <TextView
         android:id="@+id/weatherLoadingTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:visibility="gone"
+        android:text="Loading ..."
         android:textAlignment="center"
-        android:text="Loading ..."/>
+        android:textSize="24sp"
+        android:visibility="gone" />
+
 </LinearLayout>
