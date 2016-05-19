@@ -1,23 +1,22 @@
 package space.ibrahim.weatherkotlin.current.weather.presentation
 
 import rx.Subscriber
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
+import space.ibrahim.weatherkotlin.common.SchedulerConfiguration
 import space.ibrahim.weatherkotlin.current.weather.data.model.OpenWeatherResponseModel
 import space.ibrahim.weatherkotlin.current.weather.domain.WeatherService
 
-class WeatherPresenter(weatherView: WeatherView, weatherService: WeatherService) {
+class WeatherPresenter(weatherView: WeatherView, weatherService: WeatherService, scheduler: SchedulerConfiguration) {
 
     val weatherView: WeatherView = weatherView
     val weatherService: WeatherService = weatherService
+    val scheduler: SchedulerConfiguration = scheduler
 
     fun searchForCity(city: String) {
-        //TODO: call service
         weatherView.showLoading(true)
         if (!city.isNullOrBlank()) {
             weatherService.getWeather(city)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(scheduler.subscriberScheduler)
+                    .observeOn(scheduler.observerScheduler)
                     .subscribe(object : Subscriber<OpenWeatherResponseModel> () {
 
                         override fun onError(e: Throwable?) {

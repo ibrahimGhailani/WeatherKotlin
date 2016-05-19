@@ -5,7 +5,7 @@ package space.ibrahim.weatherkotlin.current.weather.data.model
  */
 data class OpenWeatherResponseModel(
         val message: String,
-        val cod: Int,
+        var cod: Int,
         val count: Int,
         val list: List<City>
 )

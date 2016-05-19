@@ -3,6 +3,9 @@ package space.ibrahim.weatherkotlin.current.weather.injection;
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+import space.ibrahim.weatherkotlin.common.SchedulerConfiguration;
 import space.ibrahim.weatherkotlin.current.weather.data.WeatherRetrofitService;
 import space.ibrahim.weatherkotlin.current.weather.data.WeatherServiceRepositoryImpl;
 import space.ibrahim.weatherkotlin.current.weather.domain.WeatherService;
@@ -47,6 +50,6 @@ public class WeatherModule {
     @PerActivity
     @Provides
     WeatherPresenter provideWeatherPresenter(WeatherView view, WeatherService service) {
-        return new WeatherPresenter(view, service);
+        return new WeatherPresenter(view, service, new SchedulerConfiguration(Schedulers.io(), AndroidSchedulers.mainThread()));
     }
 }
