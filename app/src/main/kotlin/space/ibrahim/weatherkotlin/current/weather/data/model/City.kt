@@ -7,7 +7,7 @@ data class City(
         val id: Int,
         val name: String,
         val coord: Coord,
-        val country: String,
-        val main: Temperature
+        val main: Temperature,
+        val weather: List<Weather>
 )
 

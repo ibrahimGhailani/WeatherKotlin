@@ -13,6 +13,7 @@ import space.ibrahim.weatherkotlin.current.weather.data.model.City;
 import space.ibrahim.weatherkotlin.current.weather.data.model.Coord;
 import space.ibrahim.weatherkotlin.current.weather.data.model.OpenWeatherResponseModel;
 import space.ibrahim.weatherkotlin.current.weather.data.model.Temperature;
+import space.ibrahim.weatherkotlin.current.weather.data.model.Weather;
 import space.ibrahim.weatherkotlin.current.weather.domain.WeatherService;
 
 import static org.mockito.Mockito.mock;
@@ -35,21 +36,23 @@ public class WeatherPresenterTest {
 
     @Test
     public void shouldDisplayTempInView() {
-
         List<City> cities = new ArrayList<>();
-        cities.add(new City(1, "riyadh", new Coord(24.0, 45.0), "KSA",
-                new Temperature("10", "10", "10", "10", "10", "10", "10")));
+        List<Weather> w = new ArrayList<>();
+        w.add(new Weather(1, "", "", ""));
+        Temperature t = new Temperature("10", "10", "10", "10", "10");
+        Coord c = new Coord(24.0, 45.0);
+        cities.add(new City(1, "riyadh", c, t, w));
         OpenWeatherResponseModel response = new OpenWeatherResponseModel("", 1, 1, cities);
 
         when(service.getWeather("riyadh")).thenReturn(Observable.just(response));
 
         presenter.searchForCity("riyadh");
         verify(view).showLoading(true);
-        verify(view).showTemperature("10");
+        verify(view).displayResults(cities);
     }
 
     @Test
-    public void shouldDisplayError() {
+    public void shouldDisplayNotFound() {
 
         List<City> cities = new ArrayList<>();
         OpenWeatherResponseModel response = new OpenWeatherResponseModel("", 0, 0, cities);
@@ -58,7 +61,7 @@ public class WeatherPresenterTest {
 
         presenter.searchForCity("asdf");
         verify(view).showLoading(true);
-        verify(view).showTemperature("Not found");
+        verify(view).showSnackBar("Not found");
         verify(view).showLoading(false);
     }
 }

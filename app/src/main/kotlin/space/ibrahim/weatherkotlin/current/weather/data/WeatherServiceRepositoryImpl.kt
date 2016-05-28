@@ -13,7 +13,6 @@ class WeatherServiceRepositoryImpl(weatherRetrofitService: WeatherRetrofitServic
                 Constants.MODE,
                 Constants.UNITS,
                 Constants.APP_ID)
-                .map { x -> x }
     }
 
     val weatherRetrofitService = weatherRetrofitService
